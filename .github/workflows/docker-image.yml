@@ -1,12 +1,12 @@
 name: Docker Image CI and security scanning
 on:
-        push:
-                branches: [ main ]
-        pull_request:
-                branches: [ main ]
+    push:
+      branches: [ main ]
+    pull_request:
+      branches: [ main ]
 
 jobs:
-        build:
+      build:
         runs-on: ubuntu-latest
 
 steps:
