@@ -7,5 +7,5 @@ COPY  requirements.txt /app
 RUN pip3 install -r requirements.txt
 USER flask
 COPY ./app/main.py /app
-CMD ["gunicorn", "-w 4", -"-b", "0.0.0.0:8000", "main:app"]
-HEALTHCHECK CMD curl --fail http://localhost:3000 || exit 1
+CMD gunicorn -w 4 -b 0.0.0.0:8000 main:app
+HEALTHCHECK CMD curl --fail http://localhost:8000 || exit 1
