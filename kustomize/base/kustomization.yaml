@@ -8,4 +8,4 @@ namespace: flask-docker
 images:
 - name: flask-docker
   newName: /flask-docker
-  newTag: 977007f441bb9d655394fc3c81b567f40a945c17
+  newTag: 64f7907b9dac84a575a3e43e6f44340e577efc81
