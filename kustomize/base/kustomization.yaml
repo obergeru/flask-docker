@@ -7,5 +7,5 @@ resources:
 namespace: flask-docker
 images:
 - name: flask-docker
-  newName: obergeru/flask-docker
-  newTag: bd0b95a1e7e31fd3a30c0a979ffbfc45761b001f
+  newName: /flask-docker
+  newTag: 977007f441bb9d655394fc3c81b567f40a945c17
