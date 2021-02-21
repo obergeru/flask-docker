@@ -57,4 +57,18 @@ jobs:
                 cd kustomize/base
                 kustomize edit set image flask-docker=$DOCKER_USERNAME/flask-docker:$GITHUB_SHA
                 cat kustomization.yaml
+            - name: Commit files
+              run: |
+                git config --local user.email "action@github.com"
+                git config --local user.name "Github action"
+                git commit -am "Bump docker tag"
+
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch: ${{ github.ref }}
+
+             
+
 
