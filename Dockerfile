@@ -5,7 +5,7 @@ RUN chown flask:flask /app
 WORKDIR /app
 COPY  requirements.txt /app
 RUN pip3 install -r requirements.txt
-RUN pip3 install -r gunicorn
+RUN pip3 install gunicorn
 USER flask
 COPY ./app/main.py /app
 CMD gunicorn -w 4 -b 0.0.0.0:8000 main:app
