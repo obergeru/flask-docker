@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: flask-docker
+  name: flask-docker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-docker
+  template:
+    metadata:
+      labels:
+        app: flask-docker
+    spec:
+      containers:
+        - image: flask-docker
+          name: flask-docker
+          ports:
+            - name: http
+              containerPort: 8000
