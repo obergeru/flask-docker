@@ -36,4 +36,4 @@ jobs:
                       password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             - name: Docker push
-              run:  docker push obergeru/flask-docker
+              run:  docker push 'obergeru/flask-docker:${{ github.sha }}'
