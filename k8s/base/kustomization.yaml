@@ -8,4 +8,4 @@ namespace: flask-docker
 images:
 - name: flask-docker
   newName: obergeru/flask-docker
-  newTag: 4a67a8d71f6dc193efb6663ed173143e1a0c6d0d
+  newTag: 2704972c444d5ec7fbafd7ab0e3b585aa8066cf9
