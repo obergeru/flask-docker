@@ -54,7 +54,7 @@ jobs:
               env:
                 DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
               run: |
-                cd kustomize/base
+                cd k8s/base
                 kustomize edit set image flask-docker=$DOCKER_USERNAME/flask-docker:$GITHUB_SHA
                 cat kustomization.yaml
             - name: Commit files
