@@ -4,6 +4,7 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
+- flask-namespace.yaml
 namespace: flask-docker
 images:
 - name: flask-docker
