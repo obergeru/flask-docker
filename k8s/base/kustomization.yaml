@@ -4,8 +4,9 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
+- flask-namespace.yaml
 namespace: flask-docker
 images:
 - name: flask-docker
   newName: obergeru/flask-docker
-  newTag: 5a70d7884a49b04d6e5ee1fba1c1f4a71bb6a8f6
+  newTag: 3fbcc9dc24160f3e164287294529391ac329192e

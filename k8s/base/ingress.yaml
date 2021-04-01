@@ -3,11 +3,16 @@ kind: Ingress
 metadata:
   name: flask-docker
 spec:
+  tls:
+  - hosts:
+    - www.bergerud.dev
+    secretName: cloudflare-tls
   rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              serviceName: flask-docker
-              servicePort: http
+  - host: www.bergerud.dev
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: flask-docker
+          servicePort: http
