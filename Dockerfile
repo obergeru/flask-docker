@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM python:3.11.0a5-alpine
 RUN mkdir /app
 RUN addgroup -S flask && adduser -S flask -G flask
 RUN chown flask:flask /app
