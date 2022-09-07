@@ -20,14 +20,14 @@ jobs:
         with:
           image: 'obergeru/flask-docker:${{ github.sha }}'
           report-format: sarif
-          report-name: dreport
+          report-name: dockle-report
           #failure-threshold: fatal
           #exit-code: 1
 
       - name: Upload dockle scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: dreport
+          sarif_file: dockle-report.sarif
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
