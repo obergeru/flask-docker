@@ -38,8 +38,7 @@ jobs:
           tags: ${{ github.sha }}, latest
         deploy:
           name: Deploy
-
-        needs: build
+          needs: build
 
         steps:
           - name: Check out code
