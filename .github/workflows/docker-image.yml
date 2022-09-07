@@ -22,7 +22,7 @@ jobs:
           report-format: sarif
           report-name: dockle-report.sarif
           failure-threshold: fatal
-          exit-code: 1
+          exit-code: 0
 
       - name: Upload dockle scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
