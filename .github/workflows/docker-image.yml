@@ -15,6 +15,15 @@ jobs:
         uses: erzz/dockle-action@v1
         with:
           image: alpine:latest
+          report-format: sarif
+          report-name: dockle-report.sarif
+          failure-threshold: fatal
+          exit-code: 1
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'dockle-report.sarif'
         
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag obergeru/flask-docker:${{ github.sha }}
