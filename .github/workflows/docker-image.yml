@@ -11,9 +11,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Run Dockle
+        uses: erzz/dockle-action@v1
+        with:
+          image: alpine:latest
+        
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag obergeru/flask-docker:${{ github.sha }}
-
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
