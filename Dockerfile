@@ -12,9 +12,14 @@ RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
 FROM python:3.10-slim@sha256:2bac43769ace90ebd3ad83e5392295e25dfc58e58543d3ab326c3330b505283d
+RUN groupadd -g 999 python && \
+    useradd -r -u 999 -g python python
+
+RUN mkdir /usr/app && chown python:python /usr/app
 WORKDIR /usr/app
-COPY --from=build /usr/app/venv ./venv
-COPY . .
+
+COPY --chown=python:python --from=build /usr/app/venv ./venv
+COPY --chown=python:python . .
 
 ENV PATH="/usr/app/venv/bin:$PATH"
 CMD [ "gunicorn", "--bind", "0.0.0.0:8000", "manage:app" ]
