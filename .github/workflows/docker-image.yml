@@ -36,34 +36,3 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: ${{ secrets.DOCKERHUB_USERNAME }}/flask-docker
           tags: ${{ github.sha }}, latest
-        deploy:
-          name: Deploy
-          needs: build
-
-        steps:
-          - name: Check out code
-            uses: actions/checkout@v2
-
-          - name: Setup Kustomize
-            uses: imranismail/setup-kustomize@v1
-            with:
-              kustomize-version: "3.6.1"
-
-          - name: Update Kubernetes resources
-            env:
-              DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-              run: |
-                cd k8s/base
-                kustomize edit set image flask-docker=$DOCKER_USERNAME/flask-docker:$GITHUB_SHA
-                cat kustomization.yaml
-          - name: Commit files
-            run: |
-              git config --local user.email "action@github.com"
-              git config --local user.name "Github action"
-              git commit -am "Bump docker tag"
-
-          - name: Push changes
-            uses: ad-m/github-push-action@master
-            with:
-              github_token: ${{ secrets.GITHUB_TOKEN }}
-              branch: ${{ github.ref }}
